@@ -118,38 +118,17 @@ public class SelectCreator implements PreparedStatementCreator {
         builder.where(expr);
         return this;
     }
-
-    public SelectCreator whereEquals(String expr, Object value) {
-
-        String param = "param" + paramIndex;
-        paramIndex++;
-
-        builder.where(expr + " = :" + param);
-        ppsc.setParameter(param, value);
-
-        return this;
-    }
     
-    public SelectCreator whereMore(String expr, Object value) {
-
+    public SelectCreator where(String expr, Object value) {
         String param = "param" + paramIndex;
         paramIndex++;
 
-        builder.where(expr + " > :" + param);
+        builder.where(expr + ":" + param);
         ppsc.setParameter(param, value);
 
         return this;
     }
 
-    public SelectCreator whereLess(String expr, Object value) {
 
-        String param = "param" + paramIndex;
-        paramIndex++;
-
-        builder.where(expr + " < :" + param);
-        ppsc.setParameter(param, value);
-
-        return this;
-    }
 
 }

@@ -1,0 +1,13 @@
+*.bak
+.project
+.settings
+.classpath
+target
+*.log
+domains
+.wlwLock
+.beabuild.txt
+.workshop
+.springBeans
+.metadata
+mvntarget

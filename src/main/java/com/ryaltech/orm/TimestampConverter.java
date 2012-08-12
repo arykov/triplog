@@ -26,7 +26,9 @@ public class TimestampConverter implements Converter<Date> {
 
     @Override
     public Date getFieldValueFromResultSet(ResultSet rs, String columnLabel) throws SQLException {
-        return rs.getTimestamp(columnLabel);
+        Date date = rs.getTimestamp(columnLabel);
+        if(date == null)return null;
+        return new Date(date.getTime());
     }
 
 }

@@ -33,8 +33,8 @@ public class RiverDaoSqlImpl implements RiverDao {
     private Mapping<User> userMapping = new Mapping<User>(User.class, USERS_TABLE)    
     		.setIdColumn("user_id")    
     		.add("userName", "user_name")
-    		.add("authProviderId", "auth_provider_id", EnumStringConverter.create(User.AuthProvider.class))
-    		.add("authProvider", "auth_provider");
+    		.add("authProviderId", "auth_provider_id")
+    		.add("authProvider", "auth_provider", EnumStringConverter.create(User.AuthProvider.class));
     
     private Mapping<Outing> outingMapping = new Mapping<Outing>(Outing.class, OUTINGS_TABLE)
     	    .setIdColumn("outing_id")
@@ -56,12 +56,12 @@ public class RiverDaoSqlImpl implements RiverDao {
 	}
 
 	@Override
-	public List<Outing> getUserOutings(String userId, Date startRange, Date endRange) {
+	public List<Outing> getUserOutings(long userId, Date startRange, Date endRange) {
 		return
 		outingMapping.createQuery(dataSource)
-		.whereEquals("user_id", userId)
-		.whereLess("start_timestamp", new Timestamp(startRange.getTime()))
-		.whereMore("start_timestamp", new Timestamp(endRange.getTime()))
+		.where("user_id=", userId)
+		.where("start_timestamp>", new Timestamp(startRange.getTime()))
+		.where("start_timestamp<", new Timestamp(endRange.getTime()))
 		.getResultList();
 	}
 
