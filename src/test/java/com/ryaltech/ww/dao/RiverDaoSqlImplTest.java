@@ -1,13 +1,14 @@
 package com.ryaltech.ww.dao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+
 import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import org.hamcrest.beans.SamePropertyValuesAs;
 import org.junit.Before;
 import org.junit.Test;

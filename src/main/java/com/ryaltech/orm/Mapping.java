@@ -247,7 +247,7 @@ public class Mapping<T extends Entity> {
      */
     public T findById(DataSource dataSource, long id) throws RowNotFoundException {
 
-        List<T> result = createQuery(dataSource).where(idColumn+"=", id).getResultList();
+        List<T> result = createQuery(dataSource).where(idColumn+" = ", id).getResultList();
 
         if (result.size() == 0) {
             throw new RowNotFoundException(table, id);
@@ -373,7 +373,7 @@ public class Mapping<T extends Entity> {
             // because our object is out-of date. Let's try querying just by ID.
             //
 
-            SelectCreator selectById = new SelectCreator().column("count(*)").from(table).where(idColumn+"=",
+            SelectCreator selectById = new SelectCreator().column("count(*)").from(table).where(idColumn+" = ",
                     entity.getId());
 
             rows = (Integer) new JdbcTemplate(dataSource).query(selectById, new ResultSetExtractor() {
