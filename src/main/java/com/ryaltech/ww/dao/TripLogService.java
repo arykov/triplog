@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("whitewater")
 public class TripLogService {
-	@Autowired
+	//@Autowired
 	private RiverDao dao;
 	
 	@RequestMapping("test/{value}")

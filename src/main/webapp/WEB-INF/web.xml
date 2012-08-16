@@ -4,10 +4,16 @@
 
 <web-app>
 	<display-name>Trip log</display-name>
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>file:/media/win7/Users/arykov/data/dev/whitewater/triplog/log4j.xml</param-value>
+	</context-param>
+
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
-		<servlet-class> org.springframework.web.servlet.DispatcherServlet </servlet-class>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet </servlet-class>
 		<load-on-startup>2</load-on-startup>
+
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
