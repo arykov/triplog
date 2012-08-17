@@ -1,8 +1,10 @@
 package com.ryaltech.log;
 
+import org.slf4j.LoggerFactory;
+
 /**
- * Logging class that brings Java5 features to log4j. In addition to the regular
- * debug, info, warn, and error methods from log4j, this class implements
+ * Logging class that brings Java5 features to slf4j. In addition to the regular
+ * debug, info, warn, and error methods from slf4j, this class implements
  * equivalents that take a variable number of args and formats them using
  * {@link String#format(String, Object...)}. Example usage is shown below:
  * 
@@ -32,27 +34,13 @@ package com.ryaltech.log;
  */
 
 public class Logger {
-/*	
-	static {
-
-		URL url = Logger.class.getClassLoader().getResource("log4j.xml");
-		if (url != null) {
-			DOMConfigurator.configure(url);
-		} else {
-			LogLog.error("Cannot find log4j.xml on the classpath.");
-
-		}
-	}
-	
-*/
 	public static Logger getLogger(Class<? extends Object> clazz) {
-		return new Logger(org.apache.log4j.Logger.getLogger(clazz.getName(),
-				new Log4jLoggerFactory()));
+		return new Logger(LoggerFactory.getLogger(clazz.getName()));
 	}
 
-	private org.apache.log4j.Logger impl;
+	private org.slf4j.Logger impl;
 
-	private Logger(org.apache.log4j.Logger impl) {
+	private Logger(org.slf4j.Logger impl) {
 		this.impl = impl;
 	}
 
