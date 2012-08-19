@@ -1,0 +1,3 @@
+- To initialize a DB run mvn sql:execute
+- To run webserver run run.sh
+- To stop the webserver run mvn jetty:stop 

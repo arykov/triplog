@@ -8,8 +8,6 @@
 	<name>triplog Maven Webapp</name>
 
 	<dependencies>
-
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
@@ -41,6 +39,7 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Testing -->
@@ -125,6 +124,34 @@
 						<version>1.0.6</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sql-maven-plugin</artifactId>
+				<version>1.5</version>
+				<dependencies>
+					<!-- TODO: figure out how to mention it only once -->
+					<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>1.3.168</version>
+					</dependency>
+				</dependencies>
+
+
+				<!-- common configuration shared by all executions -->
+				<configuration>
+					<driver>org.h2.Driver</driver>
+					<url>jdbc:h2:whitewaterdb</url>
+					<username>sa</username>
+					<password></password>
+					<autocommit>true</autocommit>
+					<srcFiles>
+						<srcFile>src/main/java/com/ryaltech/ww/dao/create_ddl.sql</srcFile>
+					</srcFiles>
+				</configuration>
+
+
 			</plugin>
 		</plugins>
 	</build>
