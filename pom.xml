@@ -18,6 +18,20 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>3.1.2.RELEASE</version>
 		</dependency>
+		<!-- OpenID -->
+		<!-- dependency> <groupId>org.openid4java</groupId> <artifactId>openid4java-nodeps</artifactId> 
+			<version>0.9.6</version> </dependency> <dependency> <groupId>commons-lang</groupId> 
+			<artifactId>commons-lang</artifactId> <version>2.3</version> </dependency> 
+			<dependency> <groupId>org.apache.httpcomponents</groupId> <artifactId>httpclient</artifactId> 
+			<version>4.1.1</version> </dependency -->
+
+		<!-- JOpenID -->
+		<dependency>
+			<groupId>org.expressme</groupId>
+			<artifactId>JOpenId</artifactId>
+			<version>1.08</version>
+		</dependency>
+
 		<!-- Jackson JSON Mapper -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
